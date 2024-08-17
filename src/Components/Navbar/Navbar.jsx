@@ -36,8 +36,8 @@ export default function Navbar() {
               </li>
 
               <li className="nav-item">
-                <Link className="nav-link fw-bolder" to="/network">
-                  Netwrok
+                <Link className="nav-link fw-bolder" to="/tvshows">
+                  Tv shows
                 </Link>
               </li>
             </ul>
