@@ -1,42 +1,74 @@
 import axios from "axios";
 import { useFormik } from "formik";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import * as Yup from "yup";
 
 export default function Register() {
+  const navigate = useNavigate();
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isLodaing, setIsLodaing] = useState(false);
+
+  const initialValues = {
+    name: "",
+    email: "",
+    password: "",
+    rePassword: "",
+    phone: "",
+  };
+
+  const validationSchema = Yup.object({
+    name: Yup.string()
+      .required("name is required")
+      .min(3, "Name must be at least three characters")
+      .max(20, "Name must be maximium 20 characters"),
+    email: Yup.string()
+      .required("Email is Required")
+      .matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Enter a valid email address"),
+    password: Yup.string()
+      .required("password is required")
+      .matches(
+        /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        "enter a valid password"
+      ),
+    rePassword: Yup.string()
+      .required("password is required")
+      .matches(
+        /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+        "enter a valid password"
+      ),
+    phone: Yup.string().required("Phone is required"),
+  });
+
   const { values, handleChange, errors, handleSubmit, touched, handleBlur } =
     useFormik({
-      initialValues: {
-        name: "",
-        email: "",
-        password: "",
-        rePassword: "",
-        phone: "",
-      },
-      validationSchema: Yup.object({
-        name: Yup.string()
-          .required("name is required")
-          .min(3, "Name must be at least three characters").max(20, "Name must be maximium 20 characters"),
-          email: Yup.string().required("Email is Required").matches(/^[^\s@]+@[^\s@]+\.[^\s@]+$/, "Enter a valid email address"),
-          password: Yup.string().required("password is required").matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, "enter a valid password"),
-          rePassword: Yup.string().required("password is required").matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, "enter a valid password"),
-          phone: Yup.string()
-          .required("Phone is required")
-      }),
-      onSubmit: submit,
+      initialValues,
+      validationSchema,
+      onSubmit,
     });
-  const navigate = useNavigate();
 
-  async function submit() {
+  async function onSubmit() {
+    setIsLodaing(true);
+    setErrorMessage("");
+    setSuccessMessage("");
+
     try {
       let { data } = await axios.post(
         "https://ecommerce.routemisr.com/api/v1/auth/signup",
         values
       );
 
-      navigate("/login");
-    } catch {
-      console.log(data);
+      setSuccessMessage(data.message);
+      setIsLodaing(false);
+      setTimeout(() => {
+        navigate("/login");
+      }, 1000);
+    } catch (err) {
+      console.log(err.response.data.message);
+      setIsLodaing(false);
+
+      setErrorMessage(err.response.data.message);
     }
   }
 
@@ -120,9 +152,20 @@ export default function Register() {
                 login
               </Link>
             </p>
-            <button type="submit" className="btn btn-primary">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              disabled={isLodaing}
+            >
               Register
+              {isLodaing && <i className="fa fa-spinner fa-spin"></i>}
             </button>
+            {errorMessage && (
+              <p className="text-center text-danger">{errorMessage}</p>
+            )}
+            {successMessage && (
+              <p className="text-center text-success">{successMessage}</p>
+            )}
           </div>
         </form>
       </div>
