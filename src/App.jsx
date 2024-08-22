@@ -7,6 +7,7 @@ import People from "./Components/People/People";
 import Register from "./Components/Register/Register";
 import Login from "./Components/Login/Login";
 import Layout from "./Components/Layout/Layout";
+import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthContextProvider from "./Contexts/AuthContext";
@@ -18,23 +19,43 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <Home />,
+        element: (
+          <ProtectedRoute>
+            <Home />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "upcoming",
-        element: <Upcoming />,
+        element: (
+          <ProtectedRoute>
+            <Upcoming />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "topRated",
-        element: <TopRated />,
+        element: (
+          <ProtectedRoute>
+            <TopRated />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "tvshows",
-        element: <TvShows />,
+        element: (
+          <ProtectedRoute>
+            <TvShows />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "people",
-        element: <People />,
+        element: (
+          <ProtectedRoute>
+            <People />
+          </ProtectedRoute>
+        ),
       },
       { path: "Register", element: <Register /> },
       { path: "Login", element: <Login /> },
