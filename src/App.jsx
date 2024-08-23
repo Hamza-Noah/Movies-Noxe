@@ -11,6 +11,7 @@ import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthContextProvider from "./Contexts/AuthContext";
+import ProtectedAuthRoute from "./Components/ProtectedAuthRoute/ProtectedAuthRoute";
 
 const router = createBrowserRouter([
   {
@@ -57,8 +58,22 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-      { path: "Register", element: <Register /> },
-      { path: "Login", element: <Login /> },
+      {
+        path: "Register",
+        element: (
+          <ProtectedAuthRoute>
+            <Register />
+          </ProtectedAuthRoute>
+        ),
+      },
+      {
+        path: "Login",
+        element: (
+          <ProtectedAuthRoute>
+            <Login />
+          </ProtectedAuthRoute>
+        ),
+      },
     ],
   },
 ]);
