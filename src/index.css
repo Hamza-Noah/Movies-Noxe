@@ -18,3 +18,9 @@ a{
 .nav-link{
     color: white !important
 }
+
+.movie-description{
+    height: 75px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
