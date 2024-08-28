@@ -52,6 +52,16 @@ export default function Navbar() {
                       Tv shows
                     </Link>
                   </li>
+                  <li className="nav-item">
+                    <Link className="nav-link fw-bolder" to="/toprated">
+                      Top Rated
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link fw-bolder" to="/upcoming">
+                      Upcoming
+                    </Link>
+                  </li>
                 </>
               )}
             </ul>
