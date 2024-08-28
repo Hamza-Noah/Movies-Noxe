@@ -12,6 +12,7 @@ import ProtectedRoute from "./Components/ProtectedRoute/ProtectedRoute";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import AuthContextProvider from "./Contexts/AuthContext";
 import ProtectedAuthRoute from "./Components/ProtectedAuthRoute/ProtectedAuthRoute";
+import MovieDetails from "./Components/MovieDetails/MovieDetails";
 
 const router = createBrowserRouter([
   {
@@ -55,6 +56,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <People />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "moviedetailes/:id",
+        element: (
+          <ProtectedRoute>
+            <MovieDetails />
           </ProtectedRoute>
         ),
       },
