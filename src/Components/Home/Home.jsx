@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import Movie from "../Movie/Movie";
+import SliderMovies from "../SliderMovies/SliderMovies"
 
 export default function Home() {
   const [movies, setMovies] = useState([]);
@@ -14,6 +15,12 @@ export default function Home() {
       "https://api.themoviedb.org/3/movie/now_playing?api_key=f31de6b44ad5fe28935eff41302201c7"
     );
 
+setTimeout(() => {
+  console.log(movies);
+  
+  
+}, 2000);    
+
     setMovies(data.results);
   }
   console.log(movies);
@@ -21,6 +28,7 @@ export default function Home() {
   return (
     <>
       <div className="container mt-5 pt-5">
+        <SliderMovies movies={movies}/>
         <h1 className="mb-5">
           <span className="d-block mb-3"> Welcome.</span>
           Millions of movies, TV shows and people to discover. Explore now.
