@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import Movie from "../Movie/Movie";
-import SliderMovies from "../SliderMovies/SliderMovies"
+import Movie from "../../Components/Movie/Movie";
+import SliderMovies from "../../Components/SliderMovies/SliderMovies"
 
 export default function Home() {
   const [movies, setMovies] = useState([]);

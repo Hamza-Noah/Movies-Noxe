@@ -1,8 +1,10 @@
+
 import axios from 'axios'
 import {useEffect, useState} from 'react';
-import Movie from '../Movie/Movie';
+import Movie from '../../Components/Movie/Movie';
 
-export default function TopRated() {
+
+export default function TvShows() {
 
   const [movies, setMovies] = useState([]);
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Person from "../Person/Person";
+import Person from "../../Components/Person/Person";
 
 export default function People() {
   const [movies, setMovies] = useState([]);

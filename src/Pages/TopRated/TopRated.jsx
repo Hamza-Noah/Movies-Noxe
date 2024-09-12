@@ -1,9 +1,8 @@
 import axios from 'axios'
 import {useEffect, useState} from 'react';
-import Movie from '../Movie/Movie';
+import Movie from '../../Components/Movie/Movie';
 
-
-export default function Upcoming() {
+export default function TopRated() {
 
   const [movies, setMovies] = useState([]);
 
@@ -14,7 +13,7 @@ export default function Upcoming() {
   async function getMovies() {
     try {
       const { data } = await axios.get(
-        "https://api.themoviedb.org/3/movie/upcoming?api_key=f31de6b44ad5fe28935eff41302201c7"
+        "https://api.themoviedb.org/3/movie/top_rated?api_key=f31de6b44ad5fe28935eff41302201c7"
       );
 
       setMovies(data.results);

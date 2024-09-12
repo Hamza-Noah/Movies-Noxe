@@ -1,16 +1,16 @@
-import Home from "../Components/Home/Home";
-import Upcoming from "../Components/Upcoming/Upcoming";
-import TopRated from "../Components/TopRated/TopRated";
-import TvShows from "../Components/TvShows/TvShows";
-import People from "../Components/People/People";
-import Register from "../Components/Register/Register";
-import Login from "../Components/Login/Login";
+import Home from "../Pages/Home/Home";
+import Upcoming from "../Pages/Upcoming/Upcoming";
+import TopRated from "../Pages/TopRated/TopRated";
+import TvShows from "../Pages/TvShows/TvShows";
+import People from "../Pages/People/People";
+import Register from "../Pages/Register/Register";
+import Login from "../Pages/Login/Login";
 import Layout from "../Components/Layout/Layout";
-import ProtectedRoute from "../Components/ProtectedRoute/ProtectedRoute";
+import ProtectedRoute from "../Pages/ProtectedRoute/ProtectedRoute";
+import MovieDetails from "../Pages/MovieDetails/MovieDetails";
 
 import { createBrowserRouter } from "react-router-dom";
-import ProtectedAuthRoute from "../Components/ProtectedAuthRoute/ProtectedAuthRoute";
-import MovieDetails from "../Components/MovieDetails/MovieDetails";
+import ProtectedAuthRoute from "../Pages/ProtectedAuthRoute/ProtectedAuthRoute";
 
 
  const router = createBrowserRouter([
