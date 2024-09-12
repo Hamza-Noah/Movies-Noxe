@@ -16,7 +16,6 @@ export default function People() {
 
     setMovies(data.results);
   }
-  console.log(movies);
 
   return (
     <>

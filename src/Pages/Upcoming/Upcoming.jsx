@@ -1,10 +1,8 @@
-import axios from 'axios'
-import {useEffect, useState} from 'react';
-import Movie from '../../Components/Movie/Movie';
-
+import axios from "axios";
+import { useEffect, useState } from "react";
+import Movie from "../../Components/Movie/Movie";
 
 export default function Upcoming() {
-
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
@@ -23,12 +21,9 @@ export default function Upcoming() {
     }
   }
 
-
-  console.log(movies);
-  
   return (
     <>
-     <div className="container mt-5 pt-5">
+      <div className="container mt-5 pt-5">
         <h1 className="mb-5">
           <span className="d-block mb-3"> Welcome.</span>
           Millions of movies, TV shows and people to discover. Explore now.

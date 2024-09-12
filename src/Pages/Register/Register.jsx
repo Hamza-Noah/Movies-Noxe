@@ -65,7 +65,6 @@ export default function Register() {
         navigate("/login");
       }, 1000);
     } catch (err) {
-      console.log(err.response.data.message);
       setIsLodaing(false);
 
       setErrorMessage(err.response.data.message);

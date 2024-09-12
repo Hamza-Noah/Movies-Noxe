@@ -6,8 +6,6 @@ export default function MovieDetails() {
   const { id } = useParams();
   const [details, setDetails] = useState({});
 
-  console.log(id);
-
   useEffect(() => {
     getDetails();
   }, []);
@@ -20,7 +18,6 @@ export default function MovieDetails() {
     setDetails(data);
   }
 
-  console.log(details);
   return (
     <>
       <div className="container">
@@ -39,13 +36,10 @@ export default function MovieDetails() {
             />
             <div className="px-4">
               <h5 className="card-title">{details.original_title}</h5>
-              <p className="card-text my-3">
-              {details.overview}
-              </p>
+              <p className="card-text my-3">{details.overview}</p>
               <p>Relase Date{details.release_date}</p>
               <p>Rate: {details.vote_average}</p>
               <p>language: {details.original_language}</p>
-
             </div>
           </div>
         </div>
